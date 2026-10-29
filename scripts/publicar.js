@@ -7,9 +7,6 @@ const raiz = process.cwd();
 const dist = path.join(raiz, 'dist');
 const docs = path.join(raiz, 'docs');
 
-const template = path.join(docs, 'index.template.html');
-const htmlDestino = path.join(docs, 'index.html');
-
 function executar(comando, argumentos) {
   const resultado = spawnSync(comando, argumentos, {
     cwd: raiz,
@@ -25,22 +22,14 @@ function executar(comando, argumentos) {
 }
 
 try {
-  console.log('\n1. Preparando HTML original...');
-
-  if (!fs.existsSync(template)) {
-    throw new Error('Arquivo docs/index.template.html não encontrado.');
-  }
-
-  fs.copyFileSync(template, htmlDestino);
-
-  console.log('\n2. Compilando projeto...');
+  console.log('\n1. Compilando projeto...');
 
   executar(process.execPath, [
     path.join(raiz, 'node_modules', 'vite', 'bin', 'vite.js'),
     'build'
   ]);
 
-  console.log('\n3. Atualizando arquivos publicados...');
+  console.log('\n2. Atualizando arquivos publicados...');
 
   if (!fs.existsSync(dist)) {
     throw new Error('Pasta dist não encontrada.');
@@ -59,7 +48,7 @@ try {
     );
   }
 
-  console.log('\n4. Preparando GitHub...');
+  console.log('\n3. Preparando GitHub...');
 
   executar('git', ['add', '-A']);
 
@@ -78,11 +67,11 @@ try {
     throw new Error('Não foi possível verificar alterações.');
   }
 
-  console.log('\n5. Criando commit...');
+  console.log('\n4. Criando commit...');
 
   executar('git', ['commit', '-m', 'Atualiza SISTEMA VET']);
 
-  console.log('\n6. Enviando ao GitHub...');
+  console.log('\n5. Enviando ao GitHub...');
 
   executar('git', ['push']);
 
