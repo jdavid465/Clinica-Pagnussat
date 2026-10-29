@@ -30,7 +30,6 @@ const styles = {
     minHeight: '100vh',
     color: '#1f2937'
   },
-
   brand: {
     backgroundColor: '#f97316',
     color: '#fff',
@@ -40,7 +39,6 @@ const styles = {
     fontSize: '16px',
     display: 'inline-block'
   },
-
   primaryButton: {
     padding: '15px 28px',
     backgroundColor: '#f97316',
@@ -52,7 +50,6 @@ const styles = {
     cursor: 'pointer',
     boxShadow: '0 8px 15px rgba(249, 115, 22, 0.22)'
   },
-
   secondaryButton: {
     padding: '15px 28px',
     backgroundColor: '#fff',
@@ -63,7 +60,6 @@ const styles = {
     fontWeight: 'bold',
     cursor: 'pointer'
   },
-
   input: {
     width: '100%',
     padding: '13px 15px',
@@ -165,7 +161,7 @@ export default function App() {
           color: '#9a3412'
         }}
       >
-        Carregando SISTEMA VET...
+        Carregando VET MAX...
       </div>
     );
   }
@@ -199,7 +195,7 @@ export default function App() {
               gap: '15px'
             }}
           >
-            <span style={styles.brand}>🐾 SISTEMA VET</span>
+            <span style={styles.brand}>🐾 VET MAX</span>
 
             <h2
               style={{
@@ -273,7 +269,7 @@ export default function App() {
               marginBottom: '15px'
             }}
           >
-            Bem-vindo ao SISTEMA VET!
+            Bem-vindo ao VET MAX!
           </h1>
 
           <p
@@ -319,7 +315,7 @@ export default function App() {
           }}
         >
           <div style={{ marginBottom: '25px' }}>
-            <span style={styles.brand}>🐾 SISTEMA VET</span>
+            <span style={styles.brand}>🐾 VET MAX</span>
           </div>
 
           <h2
@@ -464,7 +460,7 @@ export default function App() {
           borderBottom: '1px solid #fef3c7'
         }}
       >
-        <span style={styles.brand}>🐾 SISTEMA VET</span>
+        <span style={styles.brand}>🐾 VET MAX</span>
       </header>
 
       <main
