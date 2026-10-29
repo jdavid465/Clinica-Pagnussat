@@ -77,135 +77,17 @@ const styles = {
 
 function PetIllustration() {
   return (
-    <svg
-      viewBox="0 0 420 300"
-      role="img"
-      aria-label="Ilustração de um cachorro e um gato recebendo cuidados veterinários"
+    <img
+      src={`${import.meta.env.BASE_URL}pets-vet.png`}
+      alt="Cachorro e gato unidos por um estetoscópio em formato de coração"
       style={{
+        display: 'block',
         width: '100%',
         maxWidth: '370px',
-        height: 'auto'
+        height: 'auto',
+        margin: '0 auto'
       }}
-    >
-      <circle cx="210" cy="145" r="118" fill="#fef3c7" />
-      <circle cx="65" cy="70" r="13" fill="#fed7aa" />
-      <circle cx="350" cy="85" r="10" fill="#fed7aa" />
-
-      <path
-        d="M55 205 Q70 190 85 205"
-        fill="none"
-        stroke="#fdba74"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M335 220 Q350 205 365 220"
-        fill="none"
-        stroke="#fdba74"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-
-      {/* Cachorro */}
-      <ellipse cx="135" cy="225" rx="72" ry="35" fill="#d97745" />
-      <ellipse cx="135" cy="155" rx="58" ry="60" fill="#f5c28b" />
-
-      <ellipse
-        cx="88"
-        cy="142"
-        rx="20"
-        ry="39"
-        transform="rotate(-25 88 142)"
-        fill="#a85d36"
-      />
-
-      <ellipse
-        cx="182"
-        cy="142"
-        rx="20"
-        ry="39"
-        transform="rotate(25 182 142)"
-        fill="#a85d36"
-      />
-
-      <ellipse cx="135" cy="177" rx="35" ry="25" fill="#fff1dc" />
-      <circle cx="116" cy="151" r="5" fill="#3f2930" />
-      <circle cx="154" cy="151" r="5" fill="#3f2930" />
-      <ellipse cx="135" cy="171" rx="8" ry="6" fill="#49343a" />
-
-      <path
-        d="M126 181 Q135 190 144 181"
-        fill="none"
-        stroke="#49343a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M90 220 Q72 237 82 253"
-        fill="none"
-        stroke="#a85d36"
-        strokeWidth="12"
-        strokeLinecap="round"
-      />
-
-      {/* Gato */}
-      <ellipse cx="282" cy="225" rx="62" ry="34" fill="#8c9aa8" />
-
-      <path d="M235 145 L230 82 Q260 92 270 120 Z" fill="#9caab7" />
-      <path d="M285 120 Q300 92 330 82 L325 145 Z" fill="#9caab7" />
-      <path d="M242 124 L239 98 L259 121 Z" fill="#f7b6a8" />
-      <path d="M297 121 L317 98 L313 124 Z" fill="#f7b6a8" />
-
-      <ellipse cx="280" cy="158" rx="53" ry="52" fill="#aebbc6" />
-      <ellipse cx="280" cy="178" rx="30" ry="20" fill="#eef2f5" />
-      <ellipse cx="263" cy="153" rx="5" ry="7" fill="#344454" />
-      <ellipse cx="297" cy="153" rx="5" ry="7" fill="#344454" />
-      <path d="M274 173 L286 173 L280 179 Z" fill="#d97979" />
-
-      <path
-        d="M280 179 Q272 188 266 181 M280 179 Q288 188 294 181"
-        fill="none"
-        stroke="#52616d"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M252 180 L224 175 M252 188 L226 193 M308 180 L336 175 M308 188 L334 193"
-        stroke="#657582"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      {/* Estetoscópio */}
-      <path
-        d="M194 105 Q205 75 225 105 L225 135 Q225 157 245 157"
-        fill="none"
-        stroke="#0f766e"
-        strokeWidth="7"
-        strokeLinecap="round"
-      />
-
-      <circle cx="247" cy="157" r="9" fill="#0f766e" />
-      <circle cx="247" cy="157" r="4" fill="#ccfbf1" />
-
-      {/* Detalhes */}
-      <path
-        d="M205 45 L205 61 M197 53 L213 53"
-        stroke="#f59e0b"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M365 145 L365 161 M357 153 L373 153"
-        stroke="#f59e0b"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-    </svg>
+    />
   );
 }
 
