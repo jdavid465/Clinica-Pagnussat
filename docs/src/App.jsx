@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -625,6 +624,37 @@ export default function App() {
           </div>
         </div>
       </main>
+
+      {/* RODAPÉ */}
+      <footer
+        style={{
+          textAlign: 'center',
+          padding: '22px 20px',
+          borderTop: '1px solid #fef3c7',
+          backgroundColor: '#fffdfa'
+        }}
+      >
+        <p
+          style={{
+            margin: '0 0 6px',
+            color: '#9ca3af',
+            fontSize: '12px'
+          }}
+        >
+          © 2026 VET MAX. Todos os direitos reservados.
+        </p>
+
+        <p
+          style={{
+            margin: 0,
+            color: '#b45309',
+            fontSize: '12px',
+            fontStyle: 'italic'
+          }}
+        >
+          by Jonathan D. Andrade
+        </p>
+      </footer>
     </div>
   );
 }
