@@ -6,7 +6,9 @@ import { spawnSync } from 'node:child_process';
 const raiz = process.cwd();
 const dist = path.join(raiz, 'dist');
 const docs = path.join(raiz, 'docs');
-const htmlOriginal = path.join(docs, 'index.html');
+
+const template = path.join(docs, 'index.template.html');
+const htmlDestino = path.join(docs, 'index.html');
 
 function executar(comando, argumentos) {
   const resultado = spawnSync(comando, argumentos, {
@@ -15,9 +17,7 @@ function executar(comando, argumentos) {
     shell: false
   });
 
-  if (resultado.error) {
-    throw resultado.error;
-  }
+  if (resultado.error) throw resultado.error;
 
   if (resultado.status !== 0) {
     throw new Error(`Falha ao executar: ${comando}`);
@@ -25,26 +25,31 @@ function executar(comando, argumentos) {
 }
 
 try {
-  console.log('\n1. Guardando o HTML original...');
+  console.log('\n1. Preparando HTML original...');
 
-  const backupHtml = fs.readFileSync(htmlOriginal, 'utf8');
+  if (!fs.existsSync(template)) {
+    throw new Error('Arquivo docs/index.template.html não encontrado.');
+  }
 
-  console.log('\n2. Compilando o projeto...');
+  fs.copyFileSync(template, htmlDestino);
+
+  console.log('\n2. Compilando projeto...');
 
   executar(process.execPath, [
     path.join(raiz, 'node_modules', 'vite', 'bin', 'vite.js'),
     'build'
   ]);
 
-  console.log('\n3. Atualizando a pasta docs...');
+  console.log('\n3. Atualizando arquivos publicados...');
 
   if (!fs.existsSync(dist)) {
     throw new Error('Pasta dist não encontrada.');
   }
 
-  const assets = path.join(docs, 'assets');
-
-  fs.rmSync(assets, { recursive: true, force: true });
+  fs.rmSync(path.join(docs, 'assets'), {
+    recursive: true,
+    force: true
+  });
 
   for (const item of fs.readdirSync(dist)) {
     fs.cpSync(
@@ -54,10 +59,7 @@ try {
     );
   }
 
-  // Restaura o HTML-fonte para a próxima compilação.
-  fs.writeFileSync(htmlOriginal, backupHtml, 'utf8');
-
-  console.log('\n4. Preparando arquivos para o GitHub...');
+  console.log('\n4. Preparando GitHub...');
 
   executar('git', ['add', '-A']);
 
@@ -73,19 +75,19 @@ try {
   }
 
   if (alteracoes.status !== 1) {
-    throw new Error('Não foi possível verificar as alterações do Git.');
+    throw new Error('Não foi possível verificar alterações.');
   }
 
   console.log('\n5. Criando commit...');
 
   executar('git', ['commit', '-m', 'Atualiza SISTEMA VET']);
 
-  console.log('\n6. Enviando para o GitHub...');
+  console.log('\n6. Enviando ao GitHub...');
 
   executar('git', ['push']);
 
   console.log('\nPUBLICAÇÃO CONCLUÍDA COM SUCESSO!');
-  
+
 } catch (erro) {
   console.error('\nERRO:', erro.message);
   process.exitCode = 1;
