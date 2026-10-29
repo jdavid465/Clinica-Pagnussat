@@ -16,3 +16,6 @@ Thumbs.db
 .idea/
 .vite/
 dist/
+
+# Arquivos locais do desktop (não enviar ao GitHub)
+/ARQUIVOS-LOCAIS-DESKTOP/
