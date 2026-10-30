@@ -4,16 +4,155 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#fffdfa" />
+
     <meta
       name="description"
       content="VET MAX - Plataforma de gestão para clínicas veterinárias."
     />
+
     <title>VET MAX | Gestão Veterinária</title>
-    <script type="module" crossorigin src="/SISTEMA-VET/assets/index-B1pzKm4Q.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fffdfa;
+        color: #292524;
+      }
+
+      .fallback {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        background:
+          radial-gradient(circle at top right, #ffedd5 0, transparent 38%),
+          #fffdfa;
+      }
+
+      .fallback-card {
+        width: 100%;
+        max-width: 560px;
+        padding: 45px 30px;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #fed7aa;
+        border-radius: 24px;
+        box-shadow: 0 15px 45px rgba(120, 53, 15, 0.08);
+      }
+
+      .brand {
+        display: inline-block;
+        padding: 11px 18px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        background: #f97316;
+        border-radius: 12px;
+        font-size: 19px;
+        font-weight: 800;
+      }
+
+      .illustration {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        background: #fff7ed;
+        border-radius: 50%;
+        font-size: 48px;
+      }
+
+      h1 {
+        margin: 0 0 15px;
+        color: #9a3412;
+        font-size: clamp(24px, 5vw, 32px);
+      }
+
+      p {
+        margin: 0 auto;
+        max-width: 420px;
+        color: #78716c;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 28px;
+        padding: 14px 25px;
+        color: #ffffff;
+        background: #f97316;
+        border: 0;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background: #ea580c;
+      }
+
+      .help {
+        margin-top: 25px;
+        color: #a8a29e;
+        font-size: 12px;
+      }
+
+      footer {
+        margin-top: 35px;
+        color: #a8a29e;
+        font-size: 11px;
+      }
+    </style>
+    <script type="module" crossorigin src="/SISTEMA-VET/assets/index-CJWh860v.js"></script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="fallback">
+        <section class="fallback-card">
+          <div class="brand">🐾 VET MAX</div>
+
+          <div class="illustration" aria-hidden="true">
+            🐶
+          </div>
+
+          <h1>Estamos preparando tudo!</h1>
+
+          <p>
+            Não conseguimos carregar o sistema neste momento.
+            Isso pode acontecer por uma falha temporária de conexão
+            ou carregamento.
+          </p>
+
+          <button
+            class="button"
+            type="button"
+            onclick="window.location.reload()"
+          >
+            Tentar novamente
+          </button>
+
+          <div class="help">
+            Se o problema continuar, entre em contato com o responsável
+            pelo sistema.
+          </div>
+
+          <footer>
+            © 2026 VET MAX. Todos os direitos reservados.
+          </footer>
+        </section>
+      </main>
+    </div>
 
   </body>
 </html>
