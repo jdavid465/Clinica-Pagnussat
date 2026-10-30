@@ -1,414 +1,485 @@
-# INSTRUÇÕES GERAIS PARA INTELIGÊNCIA ARTIFICIAL — SISTEMA VET
 
-## 1. OBJETIVO PRINCIPAL
+# INSTRUÇÕES OBRIGATÓRIAS DE DESENVOLVIMENTO — VET MAX
 
-Você é uma IA responsável por auxiliar no desenvolvimento, manutenção, modernização e evolução contínua do SISTEMA VET.
+## 1. OBJETIVO
 
-Seu trabalho deve considerar o sistema como um projeto integrado, e não como arquivos independentes.
+Você é responsável por auxiliar no desenvolvimento, manutenção, modernização e evolução contínua do VET MAX.
 
-Você tem liberdade para identificar problemas, propor melhorias, desenvolver funcionalidades, modernizar tecnologias e reorganizar a arquitetura quando houver justificativa técnica.
+O VET MAX é uma plataforma de gestão veterinária para clínicas, hospitais e redes, com arquitetura multiempresa e multiunidade.
 
-O objetivo é construir um sistema veterinário completo, estável, seguro, escalável e de fácil utilização.
+O trabalho deverá considerar o sistema como um projeto integrado.
 
-## 2. REPOSITÓRIO E AMBIENTE DE DESENVOLVIMENTO
+Princípios fundamentais:
 
-Repositório oficial:
+1. EVOLUIR.
+2. INTEGRAR.
+3. PROTEGER.
+
+## 2. REPOSITÓRIO OFICIAL
 
 https://github.com/jdavid465/SISTEMA-VET
 
-Ambiente de desenvolvimento:
+O usuário trabalha com:
 
-- Editor: Visual Studio Code.
-- Sistema operacional: Windows.
-- Frontend: React + Vite, conforme a estrutura atualmente documentada.
-- Backend e serviços: Firebase, conforme a implementação do projeto.
-- Estrutura principal do frontend: `docs/`.
+- Visual Studio Code.
+- Windows.
+- React e Vite, conforme a implementação documentada.
+- Firebase, conforme a implementação atual.
+- GitHub.
 
-A estrutura e as tecnologias podem evoluir. Sempre confirme a situação atual antes de tomar decisões.
+Sempre verificar o estado atual antes de tomar decisões técnicas.
 
-## 3. CONSULTA OBRIGATÓRIA ANTES DE QUALQUER ALTERAÇÃO
+## 3. REGRA OBRIGATÓRIA DE LEITURA DA DOCUMENTAÇÃO
 
-Antes de iniciar uma tarefa:
+Antes de qualquer análise, correção, implementação, reorganização ou alteração, a IA deverá:
 
-1. Consulte o repositório oficial no GitHub.
-2. Leia o README.md atualizado.
-3. Leia este arquivo de instruções.
-4. Analise a estrutura atual das pastas e dos arquivos.
-5. Identifique as tecnologias, dependências e serviços utilizados.
-6. Verifique como a funcionalidade solicitada está implementada atualmente.
-7. Identifique arquivos relacionados e possíveis dependências.
-8. Verifique se existem alterações anteriores que precisam ser consideradas.
+1. Acessar o repositório oficial.
+2. Ler integralmente o `README.md` atualizado.
+3. Ler integralmente o `PLANO-DE-DESENVOLVIMENTO.md`.
+4. Ler integralmente este arquivo `INSTRUCOES-IA.md`.
+5. Verificar a estrutura atual do projeto.
+6. Analisar os arquivos envolvidos e suas dependências.
+7. Comparar o planejamento com o código efetivamente existente.
 
-Não presuma que a documentação representa perfeitamente o código atual. O código existente também deve ser analisado.
+A leitura dos três documentos é obrigatória em toda nova tarefa de desenvolvimento, mesmo quando a IA já tiver trabalhado anteriormente no projeto.
 
-Se não conseguir acessar o GitHub ou os arquivos necessários, informe a limitação antes de propor alterações. Não invente código ou estruturas.
+A documentação não substitui a análise do código.
 
-## 4. ANÁLISE DE DEPENDÊNCIAS E INTEGRAÇÃO ENTRE ARQUIVOS
+Se qualquer um dos documentos não estiver disponível, a IA deverá informar a limitação e solicitar que o usuário disponibilize o conteúdo necessário.
 
-Nenhum arquivo deve ser analisado ou modificado isoladamente.
+Não inventar regras, estruturas ou conteúdos de documentos que não puderam ser acessados.
 
-Antes de realizar uma alteração, identifique como o arquivo se relaciona com os demais componentes do sistema.
+### Regra de precedência
 
-Verifique especialmente:
+Em caso de divergência:
 
-- Imports e exports.
-- Funções e variáveis compartilhadas.
-- IDs, classes e seletores.
-- Eventos e listeners.
-- Rotas e navegação.
-- Componentes React.
-- Arquivos HTML, JavaScript e CSS.
-- Configurações e variáveis de ambiente.
-- Integrações com Firebase.
-- Estruturas e operações do banco de dados.
-- Autenticação e permissões.
-- Módulos e funcionalidades que dependem do recurso alterado.
+1. As regras de segurança e integridade deste documento devem ser respeitadas.
+2. O código atual deverá ser analisado para identificar o funcionamento real.
+3. O planejamento deverá ser atualizado para refletir decisões aprovadas.
+4. Nenhuma funcionalidade deverá ser considerada implementada apenas porque consta na documentação.
 
-### Exemplo prático
+## 4. ANÁLISE OBRIGATÓRIA DO PROJETO
 
-Se uma alteração no `index.html` exigir ajustes em `app.js`, componentes React, CSS ou outros módulos, identifique e faça todas as alterações necessárias.
+Antes de alterar qualquer arquivo:
 
-Não considere uma tarefa concluída apenas porque o arquivo principal foi modificado.
+- Consultar a branch atual.
+- Consultar o histórico relevante.
+- Verificar a árvore de arquivos.
+- Identificar os arquivos envolvidos.
+- Ler os arquivos completos quando necessário.
+- Verificar imports e exports.
+- Identificar componentes relacionados.
+- Identificar serviços e funções compartilhadas.
+- Verificar dependências.
+- Verificar rotas e navegação.
+- Verificar integrações com Firebase.
+- Verificar regras de segurança.
+- Identificar impactos sobre os módulos existentes.
 
-### Regras obrigatórias
+Nunca analisar arquivos isoladamente.
 
-1. Identificar todos os arquivos envolvidos.
-2. Avaliar os impactos da alteração no sistema.
-3. Modificar os arquivos necessários para manter a integração.
-4. Evitar alterações desnecessárias em arquivos não relacionados.
-5. Não deixar referências quebradas ou funcionalidades parcialmente implementadas.
-6. Verificar conflitos, duplicações e incompatibilidades.
-7. Testar a integração entre os componentes afetados.
-8. Informar quais arquivos foram modificados e o motivo.
+Se não for possível acessar o código atual, solicitar os arquivos ao usuário.
 
-## 5. ENTREGA OBRIGATÓRIA DE ARQUIVOS COMPLETOS
+## 5. ARQUITETURA DO VET MAX
 
-O usuário trabalha diretamente no Visual Studio Code.
+O sistema deverá evoluir para uma arquitetura multiempresa e multiunidade.
 
-Sempre que precisar corrigir, modificar, adicionar ou remover qualquer parte de um arquivo, entregue o arquivo completo.
+### 5.1 Organização
 
-Isso se aplica a:
+Representa a clínica, hospital ou rede contratante.
 
-- HTML.
-- CSS.
-- JavaScript.
-- JSX e TSX.
-- JSON.
-- Configurações.
-- Scripts.
-- Documentação.
-- Arquivos Markdown.
-- Outros arquivos do projeto.
+Cada organização deverá possuir identificação própria e isolamento dos dados.
 
-### Nunca entregar apenas:
+### 5.2 Unidade
 
-- Trechos isolados.
-- Linhas para substituir manualmente.
-- Pequenos blocos de código sem o restante do arquivo.
-- Instruções vagas como "adicione isso no final".
-- Substituições sem informar a localização.
+Representa um estabelecimento pertencente à organização.
 
-### Formato obrigatório de entrega
+Uma organização poderá possuir uma ou várias unidades.
 
-Para cada arquivo alterado:
+### 5.3 Usuário
 
-1. Informar o caminho exato.
-2. Apresentar o conteúdo completo, da primeira à última linha.
-3. Utilizar um bloco de código com a linguagem correta.
-4. Informar se o arquivo deve ser criado ou substituído.
-5. Explicar brevemente sua finalidade.
+Possui vínculo com a organização e permissões específicas para uma ou mais unidades.
 
-Se vários arquivos precisarem ser alterados, entregar todos completos e identificados individualmente.
+### 5.4 Tutores e pacientes
 
-Não omitir partes do arquivo com expressões como "restante permanece igual".
+Tutores e pacientes pertencem à organização.
 
-## 6. EVOLUÇÃO CONTÍNUA DO SISTEMA
+Os módulos deverão reutilizar esses cadastros, evitando duplicidade.
 
-O SISTEMA VET deve evoluir continuamente.
+### 5.5 Compartilhamento
 
-A IA tem liberdade para propor, desenvolver, atualizar, modernizar, reorganizar e implementar novas funcionalidades, módulos, serviços e tecnologias que tragam melhorias ao projeto.
+O planejamento prevê:
 
-### Regras
+- Tutores e pacientes compartilhados dentro da organização.
+- Histórico clínico acessível conforme permissões.
+- Internamento integrado ao histórico do paciente.
+- Estoque independente por unidade.
+- Financeiro independente por unidade.
+- Indicadores consolidados para gestores autorizados.
 
-- Não limitar melhorias por causa da estrutura atual.
-- Não manter soluções antigas apenas porque já existem.
-- Identificar oportunidades de modernização e otimização.
-- Propor novas arquiteturas quando forem tecnicamente justificadas.
-- Implementar novos recursos sem restrições desnecessárias.
-- Substituir componentes, serviços ou estruturas quando houver uma solução comprovadamente melhor.
-- Planejar migrações para evitar perda de dados e funcionalidades.
-- Manter compatibilidade com os recursos existentes sempre que possível.
-- Explicar os impactos de mudanças estruturais.
-- Apresentar um plano de transição quando houver necessidade de descontinuar ou substituir funcionalidades.
+Não presumir que essas funcionalidades já estejam implementadas.
 
-**REGRA CENTRAL: preservar o que funciona não significa impedir mudanças. O objetivo é evoluir o sistema, melhorar sua qualidade e ampliar suas capacidades sem causar perdas ou regressões desnecessárias.**
+## 6. ORDEM DE DESENVOLVIMENTO
 
-## 7. INTEGRIDADE E PROTEÇÃO DAS FUNCIONALIDADES
+A implementação deverá respeitar as dependências técnicas.
 
-Toda alteração deve considerar o funcionamento global do sistema.
+Ordem prioritária:
 
-Antes de implementar:
+1. Organização e unidades.
+2. Usuários e permissões.
+3. Cadastro de tutores.
+4. Cadastro de pacientes.
+5. Atendimento.
+6. Internamento e demais módulos.
 
-1. Identifique as funcionalidades que podem ser afetadas.
-2. Verifique se existem outros módulos utilizando o recurso.
-3. Avalie possíveis efeitos colaterais.
-4. Considere compatibilidade com dados e configurações existentes.
+O atendimento possui prioridade operacional e deverá contemplar:
 
-Depois de implementar:
+- Consulta.
+- Anamnese.
+- Criação de receita.
+- Exportação de receita em PDF.
+- Lançamento de serviços.
+- Histórico clínico.
 
-1. Verifique se os arquivos estão integrados.
-2. Confira imports, exports, referências e rotas.
-3. Verifique se as funcionalidades relacionadas continuam funcionando.
-4. Procure erros no console e no processo de build.
-5. Execute testes adequados à alteração.
-6. Informe eventuais limitações ou testes que não puderam ser realizados.
+Os módulos futuros deverão utilizar a mesma base de cadastros e serviços.
 
-Não declare que algo foi testado se o teste não foi executado.
+Não criar versões independentes de tutor, paciente ou organização dentro de cada módulo.
 
-## 8. SEGURANÇA E FIREBASE
+## 7. INTEGRAÇÃO ENTRE MÓDULOS
 
-Qualquer alteração envolvendo Firebase deve considerar:
+Toda implementação deverá considerar os módulos existentes e futuros.
+
+Exemplos:
+
+- Atendimento utiliza tutor e paciente cadastrados.
+- Internamento utiliza o mesmo paciente e histórico.
+- Vacinação utiliza o cadastro central do paciente.
+- Estoque fornece informações conforme a unidade.
+- Financeiro recebe serviços lançados no atendimento.
+- Relatórios consolidam dados conforme permissões.
+
+Antes de criar uma estrutura nova, verificar se já existe serviço ou cadastro equivalente.
+
+Definir identificadores consistentes e relacionamentos claros.
+
+Evitar duplicação, referências quebradas e dependências circulares.
+
+Uma funcionalidade somente estará integrada quando o fluxo entre os módulos for testado.
+
+## 8. AMBIENTES
+
+O projeto utilizará três ambientes:
+
+| Nome | Identificação técnica | Função |
+|---|---|---|
+| DESENVOLVIMENTO | DEV | Programação |
+| TESTES | HML | Validação |
+| OFICIAL | PRD | Operação real |
+
+Cada ambiente deverá possuir projeto Firebase independente.
+
+O código-fonte permanecerá em um único projeto local e um único repositório GitHub.
+
+As configurações deverão selecionar o ambiente correto por meio dos mecanismos adotados pelo projeto, como variáveis de ambiente do Vite.
+
+Nunca misturar dados ou credenciais entre ambientes.
+
+Nunca realizar testes destrutivos no ambiente OFICIAL.
+
+O ambiente TESTES deverá utilizar dados fictícios ou dados adequadamente autorizados e protegidos.
+
+## 9. SEGURANÇA E FIREBASE
+
+Qualquer implementação envolvendo Firebase deverá considerar:
 
 - Firebase Authentication.
-- Firestore.
+- Cloud Firestore.
 - Regras de segurança.
-- Isolamento de dados entre clínicas.
-- Identificação dos usuários.
-- Perfis e permissões.
-- Controle de acesso.
-- Proteção de informações dos clientes e pacientes.
+- Isolamento por organização.
+- Permissões por unidade.
+- Proteção de informações clínicas.
 - Integridade dos registros.
+- Controle de acesso.
+- Tratamento de falhas.
+- Compatibilidade com os dados existentes.
 
-Nunca exponha senhas, tokens privados, chaves administrativas ou credenciais sensíveis.
+Nunca enfraquecer regras de segurança para facilitar o desenvolvimento.
 
-Não enfraqueça regras de segurança para facilitar uma implementação.
+Nunca expor credenciais administrativas, senhas, tokens privados ou segredos no frontend.
 
-Em alterações de banco de dados, avalie compatibilidade com registros existentes e necessidade de migração.
+Antes de modificar estruturas de banco de dados, avaliar migrações e compatibilidade com registros existentes.
 
-## 9. PADRÃO DE DESENVOLVIMENTO
+## 10. REGRA ABSOLUTA DE GRAVAÇÃO
 
-O código deve priorizar:
+O VET MAX nunca poderá afirmar que um registro foi salvo sem confirmação efetiva do banco de dados.
 
-- Organização.
-- Legibilidade.
-- Manutenção simples.
-- Reutilização de componentes.
-- Responsabilidade bem definida entre módulos.
-- Segurança.
-- Desempenho.
-- Responsividade.
-- Acessibilidade.
-- Compatibilidade com os navegadores utilizados.
-- Facilidade para futuras expansões.
+### Quando a gravação falhar
 
-Evite duplicação desnecessária de código.
+A aplicação deverá:
 
-Não crie dependências externas sem avaliar sua necessidade, segurança, manutenção e impacto no projeto.
+1. Identificar a falha.
+2. Informar que o registro não foi salvo.
+3. Orientar o usuário a contatar o responsável pelo sistema.
+4. Registrar a ocorrência técnica quando possível.
+5. Notificar o administrador quando houver mecanismo de alerta disponível.
 
-## 10. TESTES E VALIDAÇÃO
+Mensagem padrão:
 
-Sempre que possível, execute:
+"Não foi possível salvar este registro. O banco de dados não confirmou a gravação. Entre em contato com o responsável pelo sistema."
 
-- Build do projeto.
-- Verificação de erros de sintaxe.
-- Verificação de imports e dependências.
-- Testes das funcionalidades modificadas.
-- Testes de integração.
-- Verificação de erros no console.
-- Verificação de regressões em funcionalidades relacionadas.
+### Proibições
 
-Se não for possível executar algum teste, informe exatamente qual teste ficou pendente.
+- Não simular salvamento.
+- Não mostrar mensagem de sucesso antes da confirmação.
+- Não afirmar que salvou quando houve erro.
+- Não criar mensagem de sucesso posterior.
+- Não executar salvamento silencioso após a recuperação do banco.
+- Não recriar automaticamente operações que falharam sem nova ação consciente do usuário.
+- Não apresentar dados não confirmados como registros oficiais.
 
-Não considere uma funcionalidade pronta apenas porque o código foi escrito.
+A interface deverá diferenciar claramente dados preenchidos, dados enviados e dados efetivamente salvos.
 
-## 11. COMANDOS E PUBLICAÇÃO
+## 11. ALERTAS AO ADMINISTRADOR
 
-O projeto possui comandos de trabalho documentados, incluindo:
+Quando ocorrer uma falha relevante de gravação, o sistema deverá prever alerta ao administrador.
 
-- `dv`: inicialização do ambiente local.
-- `pb`: processo de build e publicação, conforme a configuração atual.
+O alerta deverá conter, quando disponível:
 
-Antes de utilizar esses comandos, confirme sua implementação e finalidade nos arquivos atuais do projeto.
+- Data e horário.
+- Ambiente.
+- Módulo.
+- Tipo de operação.
+- Categoria do erro.
+- Identificador técnico da ocorrência.
+- Organização e unidade por identificadores internos.
 
-### Regra de autorização
+Não incluir informações clínicas desnecessárias.
+
+O alerta deverá orientar a verificação da infraestrutura.
+
+Se o banco principal estiver indisponível, não presumir que será possível registrar a falha nele. Deverá ser planejado mecanismo de observabilidade independente, quando tecnicamente viável.
+
+Não afirmar que o administrador recebeu alerta enquanto esse mecanismo não estiver implementado e testado.
+
+## 12. MONITORAMENTO DE INFRAESTRUTURA
+
+O planejamento prevê monitoramento global no painel MASTER.
+
+Níveis:
+
+- 50%: aviso discreto.
+- 70%: alerta e prevenção.
+- 90%: proteção seletiva.
+- 100% ou falha real: bloquear operações sem confirmação segura.
+
+Operações não essenciais poderão ser limitadas preventivamente, como relatórios não urgentes, exportações em massa e personalizações.
+
+Operações clínicas essenciais deverão receber prioridade, sem prometer funcionamento quando a infraestrutura estiver indisponível.
+
+Pagamentos, registros clínicos e movimentações financeiras não poderão ser confirmados sem gravação segura.
+
+O monitoramento deverá distinguir:
+
+- Métricas do provedor.
+- Métricas internas da aplicação.
+- Estimativas de consumo.
+- Erros reais de operação.
+
+Não presumir que os percentuais configurados no MASTER alteram cotas ou limites do Firebase.
+
+## 13. TESTES DE INDISPONIBILIDADE
+
+Os testes deverão ser realizados no ambiente TESTES.
+
+Planejar e executar separadamente:
+
+1. Teste de indisponibilidade do banco.
+2. Teste de falha de comunicação.
+3. Teste de limite de uso simulado.
+4. Teste de recuperação.
+5. Verificação de integridade após recuperação.
+
+Não esgotar cotas reais deliberadamente.
+
+Não provocar custos desnecessários.
+
+Após a recuperação:
+
+- Confirmar que o banco voltou a responder.
+- Confirmar que registros não salvos não foram criados automaticamente.
+- Verificar duplicidade.
+- Verificar integridade.
+- Registrar resultados.
+
+## 14. EVOLUÇÃO E MODERNIZAÇÃO
+
+A IA poderá propor melhorias e modernizações quando houver justificativa técnica.
+
+Não limitar o desenvolvimento à arquitetura atual.
+
+Entretanto:
+
+- Analisar impactos antes de substituir soluções.
+- Preservar funcionalidades existentes.
+- Planejar migrações.
+- Evitar regressões.
+- Não apagar recursos sem autorização.
+- Não inventar funcionalidades.
+- Não alterar decisões comerciais ou arquiteturais aprovadas sem apresentar os impactos.
+
+## 15. ENTREGA OBRIGATÓRIA DE ARQUIVOS COMPLETOS
+
+O usuário trabalha diretamente no VS Code no Windows.
+
+Sempre que houver alteração de arquivo, entregar o conteúdo completo, da primeira à última linha.
+
+Para cada arquivo:
+
+1. Informar o caminho exato.
+2. Informar se será criado ou substituído.
+3. Entregar o conteúdo completo.
+4. Utilizar bloco de código com linguagem adequada.
+5. Explicar brevemente a finalidade.
+6. Informar os testes necessários.
+
+Não utilizar reticências para omitir conteúdo.
+
+Não entregar apenas trechos quando a solicitação exigir o arquivo completo.
+
+Quando vários arquivos forem afetados, entregar todos completos e verificar a compatibilidade entre eles.
+
+## 16. TESTES E VALIDAÇÃO
+
+Sempre que possível:
+
+- Executar build.
+- Verificar sintaxe.
+- Verificar imports e exports.
+- Verificar dependências.
+- Testar os fluxos modificados.
+- Testar integrações.
+- Verificar console.
+- Verificar terminal.
+- Verificar regressões.
+
+Não afirmar que um teste foi executado se não foi.
+
+Diferenciar:
+
+- Implementado.
+- Parcialmente implementado.
+- Planejado.
+- Testado.
+- Validado.
+- Disponível no ambiente OFICIAL.
+
+## 17. PREVENÇÃO DE TELA BRANCA
+
+Quando houver tela branca ou falha de inicialização:
+
+1. Investigar a causa raiz.
+2. Verificar console do navegador.
+3. Verificar terminal.
+4. Verificar imports e exports.
+5. Verificar dependências.
+6. Verificar inicialização do React.
+7. Verificar serviços externos.
+8. Mapear arquivos relacionados.
+9. Corrigir a origem do problema.
+10. Testar a aplicação completa.
+
+Não realizar correções aleatórias em cascata.
+
+Não remover funcionalidades para apenas fazer a tela carregar.
+
+Uma correção só será considerada concluída quando a aplicação inicializar corretamente e os recursos relacionados forem verificados.
+
+## 18. COMANDOS DO PROJETO
+
+Comandos documentados:
+
+- `dv`: iniciar ambiente local.
+- `pb`: executar processo de build e publicação.
+
+Sempre verificar a implementação atual antes de executar qualquer comando.
+
+**Atenção:** `pb` poderá executar operações de Git e publicação. Nunca executá-lo sem autorização explícita.
+
+## 19. GITHUB E PUBLICAÇÃO
 
 Nunca realizar sem autorização explícita:
 
 - Commit.
 - Push.
-- Publicação no GitHub.
 - Deploy.
-- Alterações diretas no repositório remoto.
+- Publicação.
+- Alteração direta no repositório remoto.
 - Exclusão de arquivos ou dados remotos.
 
-O usuário deve decidir quando uma alteração será publicada.
+Antes de qualquer publicação:
 
-## 12. DOCUMENTAÇÃO E README
+- Conferir arquivos alterados.
+- Conferir build.
+- Conferir testes.
+- Informar o que será publicado.
+- Aguardar autorização.
 
-O README.md é uma referência importante para o planejamento e acompanhamento do desenvolvimento.
+Preservar histórico e alterações anteriores.
 
-Ao atualizar a documentação:
+## 20. DOCUMENTAÇÃO
 
-- Consultar a versão atual.
-- Manter informações coerentes com o código.
-- Registrar novas funcionalidades.
-- Atualizar etapas e pendências.
-- Não marcar como concluído algo que ainda não foi implementado.
-- Registrar decisões arquiteturais relevantes.
-- Evitar informações duplicadas ou contraditórias.
+Manter os três documentos coerentes:
 
-Utilizar checklists quando forem úteis:
+- `README.md`: apresentação e visão geral.
+- `PLANO-DE-DESENVOLVIMENTO.md`: prioridades, etapas e evolução.
+- `INSTRUCOES-IA.md`: regras obrigatórias de trabalho.
 
-- [ ] Pendente.
-- [x] Concluído.
+Atualizar a documentação quando decisões ou funcionalidades mudarem.
 
-## 13. COMUNICAÇÃO COM O USUÁRIO
+Não duplicar informações desnecessariamente.
 
-O usuário prefere respostas objetivas e trabalha diretamente no VS Code.
+Não marcar como concluído algo que ainda não foi validado.
+
+## 21. COMUNICAÇÃO
+
+O usuário prefere comunicação objetiva e organizada.
 
 Portanto:
 
-- Seja direto e organizado.
-- Evite explicações desnecessariamente longas.
-- Informe o que será feito antes de mudanças complexas.
-- Apresente os caminhos dos arquivos.
-- Entregue os arquivos completos.
-- Explique os impactos relevantes.
-- Informe como salvar e testar.
-- Avise sobre riscos e limitações.
-- Não faça perguntas quando a informação já estiver disponível no projeto.
+- Explicar o que será feito.
+- Informar os caminhos dos arquivos.
+- Entregar arquivos completos.
+- Apresentar comandos simples.
+- Explicar riscos relevantes.
+- Orientar testes.
+- Não fazer perguntas sobre informações que já estejam disponíveis na documentação ou no código.
 
-Quando houver mais de uma solução, recomende a tecnicamente mais adequada e explique brevemente o motivo.
+Quando houver várias soluções, recomendar a mais adequada e explicar brevemente o motivo.
 
-## 14. REGRA DE NÃO PRESUMIR IMPLEMENTAÇÕES
+## 22. FLUXO OBRIGATÓRIO DE TRABALHO
 
-Diferencie claramente:
+Toda tarefa deverá seguir esta sequência:
 
-- Funcionalidade existente.
-- Funcionalidade parcialmente implementada.
-- Funcionalidade planejada.
-- Funcionalidade proposta.
-- Funcionalidade efetivamente testada.
+1. Ler README.md.
+2. Ler PLANO-DE-DESENVOLVIMENTO.md.
+3. Ler INSTRUCOES-IA.md.
+4. Consultar o GitHub.
+5. Analisar os arquivos atuais.
+6. Identificar dependências.
+7. Avaliar riscos.
+8. Planejar a alteração.
+9. Implementar.
+10. Entregar todos os arquivos completos.
+11. Executar ou orientar testes.
+12. Informar resultados e pendências.
+13. Aguardar autorização antes de publicar.
 
-Nunca afirme que um recurso existe, funciona ou está concluído sem verificar.
+## 23. PRINCÍPIO FINAL
 
-Não invente arquivos, funções, rotas, serviços, configurações ou resultados de testes.
+O VET MAX deve evoluir como uma plataforma integrada, segura e preparada para crescimento.
 
-## 15. FLUXO OBRIGATÓRIO DE TRABALHO
+Nenhum módulo deverá ser tratado como um sistema isolado.
 
-Toda tarefa de desenvolvimento deve seguir este fluxo:
-
-1. Consultar o GitHub e a documentação atual.
-2. Analisar os arquivos envolvidos.
-3. Entender as dependências e integrações.
-4. Identificar riscos e impactos.
-5. Definir a solução técnica.
-6. Implementar as alterações necessárias.
-7. Entregar todos os arquivos modificados completos.
-8. Orientar a substituição ou criação dos arquivos no VS Code.
-9. Executar ou orientar os testes.
-10. Informar os resultados e eventuais pendências.
-11. Aguardar autorização antes de publicar.
-
-## 16. PRINCÍPIO FUNDAMENTAL
-
-O SISTEMA VET deve ser tratado como um projeto único, integrado e em constante evolução.
-
-A IA deve ter iniciativa para melhorar o sistema, capacidade de compreender as relações entre seus arquivos e responsabilidade para evitar regressões.
+Toda alteração deverá respeitar a arquitetura, os dados, as permissões e as funcionalidades existentes.
 
 **EVOLUIR, INTEGRAR E PROTEGER.**
-
-Esses três princípios devem orientar todas as decisões de desenvolvimento.
-
-O objetivo não é apenas fazer uma alteração funcionar, mas garantir que ela contribua para a qualidade e o funcionamento do SISTEMA VET como um todo.
-
-## 17. PREVENÇÃO DE TELA BRANCA E ERROS EM CASCATA
-
-Sempre que houver tela branca, falha de carregamento, aplicação que não inicializa ou erro que impeça o funcionamento do sistema, a IA deverá investigar a causa raiz antes de modificar arquivos.
-
-### 17.1. Diagnóstico obrigatório
-
-Antes de corrigir:
-
-1. Verificar o console do navegador e identificar os erros.
-2. Verificar o terminal do VS Code e os erros de build.
-3. Analisar a sequência de carregamento da aplicação.
-4. Verificar imports, exports, caminhos de arquivos e dependências.
-5. Conferir se os componentes, funções e elementos esperados realmente existem.
-6. Verificar incompatibilidades entre HTML, JavaScript, React, CSS e serviços externos.
-7. Identificar se um erro está provocando outros erros em sequência.
-8. Verificar alterações recentes que possam ter provocado o problema.
-9. Mapear todos os arquivos envolvidos antes de implementar a correção.
-10. Identificar se existe uma causa comum para vários erros aparentemente independentes.
-
-### 17.2. Correção pela causa raiz
-
-A IA deve:
-
-- Corrigir a origem do problema, não apenas esconder seus sintomas.
-- Avaliar todas as dependências afetadas.
-- Corrigir conjuntamente os arquivos necessários.
-- Evitar soluções paliativas que apenas façam a tela carregar temporariamente.
-- Preservar funcionalidades que não estejam relacionadas ao problema.
-- Não substituir arquivos inteiros por versões simplificadas apenas para eliminar erros.
-- Não remover funcionalidades para fazer a aplicação voltar a carregar sem justificativa técnica.
-- Não criar correções que provoquem incompatibilidades com outros módulos.
-
-### 17.3. Prevenção de erros em cascata
-
-Não corrigir erros isoladamente sem verificar se eles possuem uma causa comum.
-
-Antes de modificar um arquivo, avaliar se a alteração pode afetar:
-
-- Outros componentes.
-- Funções compartilhadas.
-- Rotas e navegação.
-- Eventos e listeners.
-- Estilos e elementos visuais.
-- Autenticação.
-- Integrações com Firebase.
-- Carregamento inicial da aplicação.
-- Funcionalidades já implementadas.
-
-Quando vários arquivos estiverem envolvidos, entregar todos completos e compatíveis entre si.
-
-### 17.4. Validação após a correção
-
-Após implementar a solução:
-
-1. Executar o build do projeto, quando disponível.
-2. Verificar se a aplicação inicializa corretamente.
-3. Confirmar que a tela branca foi resolvida.
-4. Verificar o console do navegador.
-5. Verificar o terminal do VS Code.
-6. Testar as funcionalidades diretamente afetadas.
-7. Verificar se funcionalidades relacionadas continuam funcionando.
-8. Procurar novos erros introduzidos pela correção.
-9. Informar quais testes foram executados e seus resultados.
-10. Informar qualquer teste que não tenha sido possível realizar.
-
-### 17.5. Quando não for possível identificar a causa
-
-Se os arquivos ou informações disponíveis não forem suficientes:
-
-- Não inventar uma causa.
-- Não realizar alterações aleatórias.
-- Solicitar o erro completo do console ou do terminal.
-- Solicitar os arquivos necessários para investigar.
-- Explicar o que ainda precisa ser verificado.
-
-### REGRA CONTRA CORREÇÕES EM CASCATA
-
-Uma correção não pode ser considerada concluída apenas porque um erro desapareceu.
-
-**A correção só será considerada concluída quando a aplicação voltar a inicializar corretamente, os arquivos envolvidos estiverem integrados e as funcionalidades relacionadas forem verificadas.**
-
-O objetivo é evitar o ciclo de corrigir um arquivo, provocar outro erro e precisar corrigir sucessivamente outros arquivos sem resolver a causa original.
-
----
-
-**REGRA FINAL: EVOLUIR, INTEGRAR E PROTEGER.**
-
-Antes de qualquer alteração, compreender o projeto. Durante a implementação, considerar todas as dependências. Depois da implementação, validar o funcionamento do sistema como um todo.
-
-O SISTEMA VET deve evoluir sem ficar preso à arquitetura atual, mas nenhuma mudança deve ser feita sem análise técnica, responsabilidade e validação.
