@@ -22,64 +22,212 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const WEB3FORMS_ACCESS_KEY = 'dd383332-8636-4d2c-97d8-1f7cfb318b75';
+
 const styles = {
   page: {
     fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#fffdfa',
+    background: '#fffdfa',
     minHeight: '100vh',
-    color: '#1f2937'
+    color: '#292524',
+    overflowX: 'clip'
+  },
+  container: {
+    width: '100%',
+    maxWidth: '1160px',
+    margin: '0 auto',
+    padding: '0 25px',
+    boxSizing: 'border-box'
   },
   brand: {
-    backgroundColor: '#f97316',
+    background: '#f97316',
     color: '#fff',
-    padding: '9px 15px',
+    padding: '10px 16px',
     borderRadius: '12px',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    display: 'inline-block'
+    fontWeight: '800',
+    fontSize: '17px',
+    display: 'inline-block',
+    whiteSpace: 'nowrap'
   },
   primaryButton: {
-    padding: '15px 28px',
-    backgroundColor: '#f97316',
+    padding: '14px 23px',
+    background: '#f97316',
     color: '#fff',
     border: 'none',
-    borderRadius: '16px',
-    fontSize: '16px',
+    borderRadius: '12px',
+    fontSize: '14px',
     fontWeight: 'bold',
     cursor: 'pointer',
-    boxShadow: '0 8px 15px rgba(249, 115, 22, 0.22)'
+    textDecoration: 'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: '0.2s'
   },
   secondaryButton: {
-    padding: '15px 28px',
-    backgroundColor: '#fff',
-    color: '#f97316',
-    border: '2px solid #f97316',
-    borderRadius: '16px',
-    fontSize: '16px',
+    padding: '13px 22px',
+    background: '#fff',
+    color: '#c2410c',
+    border: '1px solid #fed7aa',
+    borderRadius: '12px',
+    fontSize: '14px',
     fontWeight: 'bold',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textDecoration: 'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  section: {
+    padding: '85px 0'
+  },
+  eyebrow: {
+    display: 'inline-block',
+    color: '#c2410c',
+    background: '#ffedd5',
+    padding: '7px 13px',
+    borderRadius: '30px',
+    fontSize: '12px',
+    fontWeight: 'bold',
+    letterSpacing: '0.5px',
+    textTransform: 'uppercase',
+    marginBottom: '17px'
+  },
+  sectionTitle: {
+    fontSize: 'clamp(28px, 4vw, 40px)',
+    lineHeight: '1.15',
+    color: '#292524',
+    margin: '0 0 16px',
+    fontWeight: '800'
+  },
+  sectionText: {
+    color: '#78716c',
+    fontSize: '16px',
+    lineHeight: '1.75',
+    maxWidth: '690px',
+    margin: '0 auto'
+  },
+  card: {
+    background: '#fff',
+    border: '1px solid #f5e7d8',
+    borderRadius: '18px',
+    padding: '25px',
+    boxShadow: '0 8px 28px rgba(120, 53, 15, 0.045)'
   },
   input: {
     width: '100%',
-    padding: '13px 15px',
     boxSizing: 'border-box',
-    border: '1px solid #d1d5db',
-    borderRadius: '12px',
+    padding: '13px 14px',
+    border: '1px solid #e7e5e4',
+    borderRadius: '10px',
     fontSize: '14px',
-    outline: 'none'
+    fontFamily: 'Arial, sans-serif',
+    outlineColor: '#fb923c',
+    background: '#fff'
   }
 };
+
+const modules = [
+  {
+    icon: '👥',
+    title: 'Tutores e pacientes',
+    description: 'Cadastros centralizados para manter as informações dos tutores e seus animais organizadas.'
+  },
+  {
+    icon: '🩺',
+    title: 'Atendimento veterinário',
+    description: 'Estrutura planejada para consultas, anamnese, registros clínicos e histórico do paciente.'
+  },
+  {
+    icon: '📋',
+    title: 'Receitas e prescrições',
+    description: 'Criação de receitas vinculadas ao atendimento, com geração de documentos em PDF prevista.'
+  },
+  {
+    icon: '🏥',
+    title: 'Internamento',
+    description: 'Acompanhamento de pacientes internados, evolução clínica, cuidados e procedimentos.'
+  },
+  {
+    icon: '💉',
+    title: 'Vacinação',
+    description: 'Organização do histórico vacinal, lotes, validade e próximos reforços.'
+  },
+  {
+    icon: '📦',
+    title: 'Estoque',
+    description: 'Controle planejado de produtos, medicamentos, entradas, saídas e movimentações por unidade.'
+  },
+  {
+    icon: '💰',
+    title: 'Financeiro',
+    description: 'Estrutura para caixa, contas, recebimentos e acompanhamento financeiro.'
+  },
+  {
+    icon: '📊',
+    title: 'Relatórios',
+    description: 'Indicadores para acompanhar a operação e apoiar decisões de gestão.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'O VET MAX é destinado apenas a clínicas pequenas?',
+    answer: 'Não. A proposta é atender clínicas independentes, hospitais veterinários e organizações com várias unidades, permitindo uma evolução gradual da estrutura.'
+  },
+  {
+    question: 'É possível administrar mais de uma unidade?',
+    answer: 'Essa é uma das bases da arquitetura planejada. Uma organização poderá possuir várias unidades, com operações próprias e gestão consolidada conforme as permissões.'
+  },
+  {
+    question: 'Os módulos já estão todos disponíveis?',
+    answer: 'Não. O VET MAX está em desenvolvimento. Os módulos serão disponibilizados gradualmente, depois de implementados, integrados e validados.'
+  },
+  {
+    question: 'Como funcionam os planos e os preços?',
+    answer: 'As condições comerciais ainda estão em formação. Entre em contato para acompanhar as novidades e demonstrar seu interesse.'
+  },
+  {
+    question: 'Como posso solicitar informações?',
+    answer: 'Utilize o formulário desta página. Sua mensagem será encaminhada para a equipe responsável pelo VET MAX.'
+  },
+  {
+    question: 'O sistema protege os dados de cada clínica?',
+    answer: 'O isolamento entre organizações, o controle de permissões e a proteção das informações são requisitos centrais da arquitetura do projeto.'
+  }
+];
+
+function Footer() {
+  return (
+    <footer style={{
+      borderTop: '1px solid #f5e7d8',
+      background: '#fffdfa',
+      padding: '27px 20px',
+      textAlign: 'center'
+    }}>
+      <div style={{
+        color: '#a8a29e',
+        fontSize: '12px',
+        lineHeight: 1.8
+      }}>
+        © 2026 VET MAX. Todos os direitos reservados.
+        <br />
+        by Jonathan D. Andrade
+      </div>
+    </footer>
+  );
+}
 
 function PetIllustration() {
   return (
     <img
       src={`${import.meta.env.BASE_URL}pets-vet.png`}
-      alt="Cachorro e gato unidos por um estetoscópio em formato de coração"
+      alt="Ilustração de cachorro e gato representando o cuidado veterinário"
       style={{
-        display: 'block',
         width: '100%',
-        maxWidth: '370px',
+        maxWidth: '390px',
         height: 'auto',
+        display: 'block',
         margin: '0 auto'
       }}
     />
@@ -96,7 +244,16 @@ export default function App() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Monitoramento da sessão Firebase
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    subject: 'Quero conhecer o VET MAX',
+    message: ''
+  });
+  const [website, setWebsite] = useState('');
+  const [sending, setSending] = useState(false);
+  const [contactStatus, setContactStatus] = useState(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
@@ -132,7 +289,118 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
-  // Login
+  useEffect(() => {
+    const style = document.createElement('style');
+
+    style.innerHTML = `
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 78px;
+      }
+
+      section[id] {
+        scroll-margin-top: 78px;
+      }
+
+      .vet-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        box-sizing: border-box;
+        background: rgba(255, 253, 250, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid #f5e7d8;
+        box-shadow: 0 3px 14px rgba(120, 53, 15, 0.045);
+      }
+
+      .vet-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
+      .vet-nav a {
+        color: #57534e;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+      }
+
+      .vet-nav a:hover {
+        color: #ea580c;
+      }
+
+      .vet-header a,
+      .vet-header button {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      @media (max-width: 900px) {
+        .vet-header {
+          flex-wrap: wrap !important;
+          row-gap: 10px !important;
+        }
+
+        .vet-nav {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 18px !important;
+          padding: 4px 0 8px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .vet-header {
+          padding: 8px 18px !important;
+          row-gap: 8px !important;
+        }
+
+        .vet-nav {
+          justify-content: flex-start;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          white-space: nowrap;
+          gap: 20px !important;
+          padding: 5px 0 8px;
+          scrollbar-width: thin;
+        }
+
+        .vet-nav a {
+          font-size: 12px !important;
+        }
+
+        .vet-header > a span {
+          padding: 8px 12px !important;
+          font-size: 15px !important;
+        }
+
+        .vet-header > button {
+          padding: 9px 12px !important;
+          font-size: 12px !important;
+        }
+      }
+
+      .vet-contact-input:focus {
+        border-color: #fb923c !important;
+        box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.13);
+        outline: none;
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
@@ -148,79 +416,139 @@ export default function App() {
     }
   };
 
-  // Carregamento
+  const handleContactChange = (e) => {
+    const { name, value } = e.target;
+
+    setContact((previous) => ({
+      ...previous,
+      [name]: value
+    }));
+
+    if (contactStatus) {
+      setContactStatus(null);
+    }
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+
+    if (sending) return;
+
+    if (website.trim()) {
+      setContactStatus({
+        type: 'success',
+        message: 'Mensagem enviada com sucesso.'
+      });
+      return;
+    }
+
+    setSending(true);
+    setContactStatus(null);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: contact.name.trim(),
+          email: contact.email.trim(),
+          subject: `[VET MAX] ${contact.subject}`,
+          message: contact.message.trim()
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || 'Não foi possível enviar a mensagem.'
+        );
+      }
+
+      setContactStatus({
+        type: 'success',
+        message: 'Mensagem enviada com sucesso! Em breve entraremos em contato.'
+      });
+
+      setContact({
+        name: '',
+        email: '',
+        subject: 'Quero conhecer o VET MAX',
+        message: ''
+      });
+    } catch (err) {
+      console.error('Erro ao enviar formulário:', err);
+
+      setContactStatus({
+        type: 'error',
+        message: 'Não foi possível enviar sua mensagem. Tente novamente mais tarde.'
+      });
+    } finally {
+      setSending(false);
+    }
+  };
+
   if (loading) {
     return (
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: '100px',
-          fontFamily: 'Arial, sans-serif',
-          fontSize: '18px',
-          color: '#9a3412'
-        }}
-      >
+      <div style={{
+        textAlign: 'center',
+        marginTop: '100px',
+        fontFamily: 'Arial, sans-serif',
+        color: '#9a3412',
+        fontSize: '18px'
+      }}>
         Carregando VET MAX...
       </div>
     );
   }
 
-  // PAINEL DA CLÍNICA
   if (user) {
     return (
-      <div
-        style={{
-          ...styles.page,
-          padding: '30px 40px',
-          boxSizing: 'border-box'
-        }}
-      >
-        <header
-          style={{
+      <div style={{
+        ...styles.page,
+        padding: '30px 40px',
+        boxSizing: 'border-box'
+      }}>
+        <header style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '15px',
+          borderBottom: '1px solid #f3e8ff',
+          paddingBottom: '20px',
+          marginBottom: '40px'
+        }}>
+          <div style={{
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '15px',
-            borderBottom: '1px solid #f3e8ff',
-            paddingBottom: '20px',
-            marginBottom: '40px'
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px'
-            }}
-          >
+            gap: '15px'
+          }}>
             <span style={styles.brand}>🐾 VET MAX</span>
 
-            <h2
-              style={{
-                margin: 0,
-                color: '#1f2937',
-                fontSize: '20px'
-              }}
-            >
+            <h2 style={{
+              margin: 0,
+              color: '#1f2937',
+              fontSize: '20px'
+            }}>
               {clinicData?.name || 'Painel da Clínica'}
             </h2>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px',
-              flexWrap: 'wrap'
-            }}
-          >
-            <span
-              style={{
-                color: '#4b5563',
-                fontSize: '14px'
-              }}
-            >
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '15px',
+            flexWrap: 'wrap'
+          }}>
+            <span style={{
+              color: '#4b5563',
+              fontSize: '14px'
+            }}>
               {user.email}
             </span>
 
@@ -241,43 +569,35 @@ export default function App() {
           </div>
         </header>
 
-        <div
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            textAlign: 'center',
-            padding: '55px 30px',
-            backgroundColor: '#fff7ed',
-            borderRadius: '24px',
-            border: '1px solid #ffedd5'
-          }}
-        >
-          <div
-            style={{
-              fontSize: '55px',
-              marginBottom: '15px'
-            }}
-          >
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          textAlign: 'center',
+          padding: '55px 30px',
+          backgroundColor: '#fff7ed',
+          borderRadius: '24px',
+          border: '1px solid #ffedd5'
+        }}>
+          <div style={{
+            fontSize: '55px',
+            marginBottom: '15px'
+          }}>
             🐾
           </div>
 
-          <h1
-            style={{
-              color: '#9a3412',
-              fontSize: '30px',
-              marginBottom: '15px'
-            }}
-          >
+          <h1 style={{
+            color: '#9a3412',
+            fontSize: '30px',
+            marginBottom: '15px'
+          }}>
             Bem-vindo ao VET MAX!
           </h1>
 
-          <p
-            style={{
-              color: '#c2410c',
-              fontSize: '16px',
-              lineHeight: '1.6'
-            }}
-          >
+          <p style={{
+            color: '#c2410c',
+            fontSize: '16px',
+            lineHeight: '1.6'
+          }}>
             Seu ambiente da clínica está conectado.
             Estamos preparando as ferramentas para facilitar
             sua rotina veterinária.
@@ -287,374 +607,916 @@ export default function App() {
     );
   }
 
-  // TELA DE LOGIN
   if (currentView === 'login') {
     return (
-      <div
-        style={{
-          minHeight: '100vh',
-          fontFamily: 'Arial, sans-serif',
-          backgroundColor: '#fb923c',
+      <div style={{
+        minHeight: '100vh',
+        fontFamily: 'Arial, sans-serif',
+        background: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '35px 20px 0',
+        boxSizing: 'border-box'
+      }}>
+        <div style={{
+          width: '100%',
+          flex: 1,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
-          padding: '25px',
-          boxSizing: 'border-box'
-        }}
-      >
-        <div
-          style={{
+          alignItems: 'center'
+        }}>
+          <div style={{
             width: '100%',
             maxWidth: '420px',
             padding: '40px',
             boxSizing: 'border-box',
             backgroundColor: '#fff',
             borderRadius: '24px',
-            boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)'
-          }}
-        >
-          <div style={{ marginBottom: '25px' }}>
-            <span style={styles.brand}>🐾 VET MAX</span>
-          </div>
+            boxShadow: '0 20px 25px -5px rgba(120, 53, 15, 0.10)',
+            border: '1px solid #ffedd5'
+          }}>
+            <div style={{ marginBottom: '25px' }}>
+              <span style={styles.brand}>🐾 VET MAX</span>
+            </div>
 
-          <h2
-            style={{
+            <h2 style={{
               color: '#1f2937',
               fontSize: '26px',
               marginBottom: '8px',
               fontWeight: '800'
-            }}
-          >
-            Bem-vindo de volta!
-          </h2>
+            }}>
+              Bem-vindo de volta!
+            </h2>
 
-          <p
-            style={{
+            <p style={{
               color: '#6b7280',
               fontSize: '14px',
               lineHeight: '1.5',
               marginBottom: '25px'
-            }}
-          >
-            Acesse o painel administrativo da sua clínica.
-          </p>
+            }}>
+              Acesse o painel administrativo da sua clínica.
+            </p>
 
-          {error && (
-            <p
-              style={{
+            {error && (
+              <p style={{
                 color: '#dc2626',
                 backgroundColor: '#fee2e2',
                 padding: '12px',
                 borderRadius: '8px',
                 fontSize: '13px',
                 marginBottom: '20px'
-              }}
-            >
-              {error}
-            </p>
-          )}
+              }}>
+                {error}
+              </p>
+            )}
 
-          <form onSubmit={handleLogin}>
-            <div style={{ marginBottom: '20px' }}>
-              <label
-                style={{
+            <form onSubmit={handleLogin}>
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{
                   display: 'block',
                   fontWeight: '600',
                   marginBottom: '8px',
                   color: '#374151',
                   fontSize: '14px'
-                }}
-              >
-                E-mail
-              </label>
+                }}>
+                  E-mail
+                </label>
 
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                style={styles.input}
-                placeholder="seu@email.com"
-                autoComplete="email"
-              />
-            </div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  style={styles.input}
+                  placeholder="seu@email.com"
+                  autoComplete="email"
+                />
+              </div>
 
-            <div style={{ marginBottom: '25px' }}>
-              <label
-                style={{
+              <div style={{ marginBottom: '25px' }}>
+                <label style={{
                   display: 'block',
                   fontWeight: '600',
                   marginBottom: '8px',
                   color: '#374151',
                   fontSize: '14px'
+                }}>
+                  Senha
+                </label>
+
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  style={styles.input}
+                  placeholder="Sua senha"
+                  autoComplete="current-password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                style={{
+                  ...styles.primaryButton,
+                  width: '100%'
                 }}
               >
-                Senha
-              </label>
+                Entrar no sistema
+              </button>
+            </form>
 
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                style={styles.input}
-                placeholder="Sua senha"
-                autoComplete="current-password"
-              />
-            </div>
-
-            <button
-              type="submit"
-              style={{
-                ...styles.primaryButton,
-                width: '100%'
-              }}
-            >
-              Entrar no sistema
-            </button>
-          </form>
-
-          <div
-            style={{
+            <div style={{
               textAlign: 'center',
               marginTop: '22px'
-            }}
-          >
-            <button
-              onClick={() => {
-                setError('');
-                setCurrentView('home');
-              }}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#9ca3af',
-                cursor: 'pointer',
-                fontSize: '14px'
-              }}
-            >
-              ← Voltar à página inicial
-            </button>
+            }}>
+              <button
+                onClick={() => {
+                  setError('');
+                  setCurrentView('home');
+                }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#9ca3af',
+                  cursor: 'pointer',
+                  fontSize: '14px'
+                }}
+              >
+                ← Voltar à página inicial
+              </button>
+            </div>
           </div>
+        </div>
+
+        <div style={{
+          width: '100%',
+          marginTop: '30px'
+        }}>
+          <Footer />
         </div>
       </div>
     );
   }
 
-  // PÁGINA INICIAL
   return (
-    <div
-      style={{
-        ...styles.page,
-        display: 'flex',
-        flexDirection: 'column'
-      }}
-    >
+    <div style={{
+      ...styles.page,
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <header
+        className="vet-header"
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '20px 60px',
-          borderBottom: '1px solid #fef3c7'
+          padding: '8px 35px',
+          minHeight: '64px',
+          gap: '20px'
         }}
       >
-        <span style={styles.brand}>🐾 VET MAX</span>
+        <a
+          href="#inicio"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}
+          aria-label="VET MAX - voltar ao início"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+            flexShrink: 0
+          }}
+        >
+          <span style={{
+            ...styles.brand,
+            padding: '8px 14px',
+            fontSize: '16px'
+          }}>
+            🐾 VET MAX
+          </span>
+        </a>
+
+        <nav className="vet-nav" style={{
+          flex: 1,
+          gap: '32px'
+        }}>
+          <a href="#inicio">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#recursos">Recursos</a>
+          <a href="#estrutura">Estrutura</a>
+          <a href="#planos">Planos</a>
+          <a href="#duvidas">Dúvidas</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <button
+          onClick={() => {
+            setError('');
+            setCurrentView('login');
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}
+          style={{
+            ...styles.primaryButton,
+            padding: '10px 18px',
+            fontSize: '13px',
+            flexShrink: 0
+          }}
+        >
+          Entrar
+        </button>
       </header>
 
-      <main
-        style={{
-          display: 'flex',
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '40px 60px',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          width: '100%',
-          boxSizing: 'border-box',
-          gap: '45px',
-          flexWrap: 'wrap'
-        }}
-      >
-        {/* TEXTO PRINCIPAL */}
-        <div
+      <main style={{
+        flex: 1
+      }}>
+        <section
+          id="inicio"
           style={{
-            flex: '1 1 400px',
-            minWidth: 0
+            ...styles.section,
+            padding: '75px 0 85px',
+            background: 'linear-gradient(180deg, #fffdfa 0%, #fff7ed 100%)'
           }}
         >
-          <span
-            style={{
-              backgroundColor: '#fef3c7',
-              color: '#d97706',
-              padding: '7px 15px',
-              borderRadius: '20px',
-              fontSize: '13px',
-              fontWeight: 'bold',
-              display: 'inline-block',
-              marginBottom: '20px'
-            }}
-          >
-            Plataforma para clínicas veterinárias
-          </span>
+          <div style={{
+            ...styles.container,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            alignItems: 'center',
+            gap: '50px'
+          }}>
+            <div>
+              <span style={styles.eyebrow}>
+                Gestão veterinária preparada para crescer
+              </span>
 
-          <h1
-            style={{
-              fontSize: 'clamp(38px, 5vw, 52px)',
-              color: '#1f2937',
-              lineHeight: '1.12',
-              marginBottom: '20px',
-              fontWeight: '900'
-            }}
-          >
-            Cuidar dos pets{' '}
-            <span style={{ color: '#f97316' }}>
-              fica mais leve.
-            </span>
-          </h1>
+              <h1 style={{
+                fontSize: 'clamp(38px, 5vw, 56px)',
+                lineHeight: 1.1,
+                color: '#292524',
+                margin: '0 0 22px',
+                fontWeight: '900'
+              }}>
+                Sua clínica evolui.
+                <br />
+                <span style={{ color: '#f97316' }}>
+                  Sua gestão acompanha.
+                </span>
+              </h1>
 
-          <p
-            style={{
-              color: '#4b5563',
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '35px',
-              maxWidth: '480px'
-            }}
-          >
-            Cada clínica tem seu próprio espaço.
-            Organize a rotina, os atendimentos e os cuidados
-            dos pacientes em um só lugar.
-          </p>
+              <p style={{
+                color: '#78716c',
+                fontSize: '17px',
+                lineHeight: 1.8,
+                maxWidth: '560px',
+                margin: '0 0 28px'
+              }}>
+                Uma plataforma pensada para organizar a rotina veterinária,
+                integrar informações e acompanhar o crescimento da sua clínica,
+                hospital ou rede.
+              </p>
 
-          <div
-            style={{
-              display: 'flex',
-              gap: '15px',
-              flexWrap: 'wrap'
-            }}
-          >
-            <button
-              onClick={() => {
-                setError('');
-                setCurrentView('login');
-              }}
-              style={styles.primaryButton}
-            >
-              Acessar Sistema
-            </button>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '13px'
+              }}>
+                <a href="#contato" style={styles.primaryButton}>
+                  Conhecer o VET MAX
+                </a>
 
-            {/* SOLICITAR ACESSO - TEMPORARIAMENTE INDISPONÍVEL */}
-            <button
-              type="button"
-              disabled
-              title="Solicitações de acesso ainda não estão disponíveis"
-              aria-label="Solicitar acesso. Indisponível no momento."
-              style={{
-                ...styles.secondaryButton,
-                opacity: 0.5,
-                cursor: 'not-allowed',
-                backgroundColor: '#f3f4f6',
-                color: '#9ca3af',
-                border: '2px solid #d1d5db',
-                boxShadow: 'none'
-              }}
-            >
-              Solicitar acesso
-            </button>
-          </div>
+                <a href="#recursos" style={styles.secondaryButton}>
+                  Conhecer recursos
+                </a>
+              </div>
 
-          <p
-            style={{
-              color: '#9ca3af',
-              fontSize: '12px',
-              marginTop: '12px'
-            }}
-          >
-            Solicitações de acesso estarão disponíveis em breve.
-          </p>
-        </div>
+              <p style={{
+                color: '#a8a29e',
+                fontSize: '12px',
+                lineHeight: 1.6,
+                marginTop: '18px'
+              }}>
+                Plataforma em desenvolvimento, com disponibilização gradual
+                dos módulos após implementação e validação.
+              </p>
+            </div>
 
-        {/* CARD LATERAL COM ILUSTRAÇÃO */}
-        <div
-          style={{
-            flex: '1 1 350px',
-            display: 'flex',
-            justifyContent: 'center',
-            minWidth: 0
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: '#fffbeb',
-              padding: '30px',
-              borderRadius: '32px',
-              border: '1px solid #fef3c7',
-              textAlign: 'center',
-              width: '100%',
-              maxWidth: '450px',
-              boxSizing: 'border-box',
-              boxShadow: '0 20px 25px -5px rgba(252, 211, 77, 0.1)'
-            }}
-          >
-            <PetIllustration />
+            <div style={{
+              ...styles.card,
+              padding: '35px 25px',
+              background: '#fffbeb',
+              borderColor: '#fef3c7',
+              textAlign: 'center'
+            }}>
+              <PetIllustration />
 
-            <h3
-              style={{
+              <h2 style={{
                 color: '#9a3412',
-                fontSize: '21px',
-                margin: '12px 0 10px'
-              }}
-            >
-              Por quem cuida de quem não sabe falar.
-            </h3>
+                fontSize: '23px',
+                margin: '20px 0 10px'
+              }}>
+                Tecnologia para quem cuida.
+              </h2>
 
-            <p
-              style={{
-                color: '#b45309',
+              <p style={{
+                color: '#a16207',
                 fontSize: '14px',
-                lineHeight: '1.6',
+                lineHeight: 1.7,
                 margin: 0
-              }}
-            >
-              Tecnologia e organização para transformar
-              a rotina veterinária.
-            </p>
+              }}>
+                Organização, integração e informação para apoiar
+                o trabalho de quem dedica sua rotina à saúde animal.
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section id="sobre" style={{
+          ...styles.section,
+          background: '#fffdfa'
+        }}>
+          <div style={{
+            ...styles.container,
+            textAlign: 'center'
+          }}>
+            <span style={styles.eyebrow}>Sobre o projeto</span>
+
+            <h2 style={styles.sectionTitle}>
+              Uma gestão que acompanha o crescimento.
+            </h2>
+
+            <p style={styles.sectionText}>
+              O VET MAX está sendo desenvolvido para atender desde uma clínica
+              independente até organizações com várias unidades. A proposta é
+              integrar cadastros, rotinas e informações em uma estrutura
+              preparada para crescer com segurança.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
+              gap: '18px',
+              marginTop: '45px',
+              textAlign: 'left'
+            }}>
+              <div style={styles.card}>
+                <div style={{ fontSize: '30px', marginBottom: '12px' }}>🏥</div>
+                <h3 style={{ color: '#9a3412', margin: '0 0 10px' }}>
+                  Para clínicas e hospitais
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  lineHeight: 1.7,
+                  fontSize: '14px',
+                  margin: 0
+                }}>
+                  Uma estrutura pensada para diferentes portes e rotinas
+                  veterinárias.
+                </p>
+              </div>
+
+              <div style={styles.card}>
+                <div style={{ fontSize: '30px', marginBottom: '12px' }}>🔗</div>
+                <h3 style={{ color: '#9a3412', margin: '0 0 10px' }}>
+                  Módulos integrados
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  lineHeight: 1.7,
+                  fontSize: '14px',
+                  margin: 0
+                }}>
+                  Cadastros compartilhados e fluxos conectados para evitar
+                  informações duplicadas.
+                </p>
+              </div>
+
+              <div style={styles.card}>
+                <div style={{ fontSize: '30px', marginBottom: '12px' }}>📈</div>
+                <h3 style={{ color: '#9a3412', margin: '0 0 10px' }}>
+                  Preparado para crescer
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  lineHeight: 1.7,
+                  fontSize: '14px',
+                  margin: 0
+                }}>
+                  Arquitetura planejada para organizações com uma ou várias
+                  unidades.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="recursos" style={{
+          ...styles.section,
+          background: '#fff7ed'
+        }}>
+          <div style={{
+            ...styles.container,
+            textAlign: 'center'
+          }}>
+            <span style={styles.eyebrow}>Recursos planejados</span>
+
+            <h2 style={styles.sectionTitle}>
+              As ferramentas para uma rotina mais organizada.
+            </h2>
+
+            <p style={{
+              ...styles.sectionText,
+              marginBottom: '42px'
+            }}>
+              Os módulos serão desenvolvidos e disponibilizados gradualmente,
+              respeitando as integrações e validações necessárias.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 235px), 1fr))',
+              gap: '18px',
+              textAlign: 'left'
+            }}>
+              {modules.map((item) => (
+                <div key={item.title} style={styles.card}>
+                  <div style={{
+                    fontSize: '30px',
+                    marginBottom: '15px'
+                  }}>
+                    {item.icon}
+                  </div>
+
+                  <h3 style={{
+                    color: '#9a3412',
+                    fontSize: '17px',
+                    margin: '0 0 10px'
+                  }}>
+                    {item.title}
+                  </h3>
+
+                  <p style={{
+                    color: '#78716c',
+                    fontSize: '14px',
+                    lineHeight: 1.7,
+                    margin: 0
+                  }}>
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="estrutura" style={{
+          ...styles.section,
+          background: '#fffdfa'
+        }}>
+          <div style={{
+            ...styles.container,
+            textAlign: 'center'
+          }}>
+            <span style={styles.eyebrow}>Estrutura do sistema</span>
+
+            <h2 style={styles.sectionTitle}>
+              Uma organização. Várias possibilidades.
+            </h2>
+
+            <p style={{
+              ...styles.sectionText,
+              marginBottom: '42px'
+            }}>
+              A arquitetura do VET MAX prevê três níveis de organização,
+              com vínculos e permissões definidos.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+              gap: '18px',
+              textAlign: 'left'
+            }}>
+              <div style={{
+                ...styles.card,
+                borderTop: '4px solid #f97316'
+              }}>
+                <div style={{ fontSize: '28px', marginBottom: '12px' }}>🏢</div>
+                <h3 style={{
+                  color: '#9a3412',
+                  margin: '0 0 10px'
+                }}>
+                  Organização
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  fontSize: '14px',
+                  lineHeight: 1.7,
+                  margin: 0
+                }}>
+                  Representa a clínica, hospital ou rede que utiliza
+                  a plataforma.
+                </p>
+              </div>
+
+              <div style={{
+                ...styles.card,
+                borderTop: '4px solid #fb923c'
+              }}>
+                <div style={{ fontSize: '28px', marginBottom: '12px' }}>🏥</div>
+                <h3 style={{
+                  color: '#9a3412',
+                  margin: '0 0 10px'
+                }}>
+                  Unidades
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  fontSize: '14px',
+                  lineHeight: 1.7,
+                  margin: 0
+                }}>
+                  Cada estabelecimento poderá possuir operações próprias,
+                  respeitando as permissões da organização.
+                </p>
+              </div>
+
+              <div style={{
+                ...styles.card,
+                borderTop: '4px solid #fcd34d'
+              }}>
+                <div style={{ fontSize: '28px', marginBottom: '12px' }}>👥</div>
+                <h3 style={{
+                  color: '#9a3412',
+                  margin: '0 0 10px'
+                }}>
+                  Usuários
+                </h3>
+                <p style={{
+                  color: '#78716c',
+                  fontSize: '14px',
+                  lineHeight: 1.7,
+                  margin: 0
+                }}>
+                  Colaboradores terão acessos definidos conforme suas
+                  responsabilidades e unidades autorizadas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="planos" style={{
+          ...styles.section,
+          background: '#fff7ed'
+        }}>
+          <div style={{
+            ...styles.container,
+            textAlign: 'center'
+          }}>
+            <span style={styles.eyebrow}>Planos e condições</span>
+
+            <h2 style={styles.sectionTitle}>
+              Uma solução que poderá acompanhar sua estrutura.
+            </h2>
+
+            <p style={{
+              ...styles.sectionText,
+              marginBottom: '30px'
+            }}>
+              Os planos e as condições comerciais ainda estão em formação.
+              A proposta é permitir opções compatíveis com diferentes portes
+              e necessidades de operação.
+            </p>
+
+            <div style={{
+              ...styles.card,
+              maxWidth: '650px',
+              margin: '0 auto',
+              padding: '35px 25px'
+            }}>
+              <div style={{
+                fontSize: '38px',
+                marginBottom: '15px'
+              }}>
+                🐾
+              </div>
+
+              <h3 style={{
+                color: '#9a3412',
+                fontSize: '22px',
+                margin: '0 0 12px'
+              }}>
+                Em breve
+              </h3>
+
+              <p style={{
+                color: '#78716c',
+                fontSize: '14px',
+                lineHeight: 1.7,
+                margin: '0 0 22px'
+              }}>
+                Entre em contato para demonstrar seu interesse e acompanhar
+                as novidades sobre os planos do VET MAX.
+              </p>
+
+              <a href="#contato" style={styles.primaryButton}>
+                Tenho interesse
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="duvidas" style={{
+          ...styles.section,
+          background: '#fffdfa'
+        }}>
+          <div style={{
+            ...styles.container,
+            textAlign: 'center'
+          }}>
+            <span style={styles.eyebrow}>Dúvidas frequentes</span>
+
+            <h2 style={styles.sectionTitle}>
+              Algumas respostas para começar.
+            </h2>
+
+            <div style={{
+              maxWidth: '800px',
+              margin: '35px auto 0',
+              display: 'grid',
+              gap: '13px',
+              textAlign: 'left'
+            }}>
+              {faqs.map((item) => (
+                <details
+                  key={item.question}
+                  style={{
+                    ...styles.card,
+                    padding: '20px 22px'
+                  }}
+                >
+                  <summary style={{
+                    color: '#9a3412',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    lineHeight: 1.5
+                  }}>
+                    {item.question}
+                  </summary>
+
+                  <p style={{
+                    color: '#78716c',
+                    fontSize: '14px',
+                    lineHeight: 1.7,
+                    margin: '13px 0 0'
+                  }}>
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contato" style={{
+          ...styles.section,
+          background: '#fff7ed'
+        }}>
+          <div style={{
+            ...styles.container
+          }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+              alignItems: 'start',
+              gap: '35px'
+            }}>
+              <div>
+                <span style={styles.eyebrow}>Fale conosco</span>
+
+                <h2 style={{
+                  ...styles.sectionTitle,
+                  maxWidth: '480px'
+                }}>
+                  Vamos conversar sobre a evolução da sua gestão?
+                </h2>
+
+                <p style={{
+                  color: '#78716c',
+                  fontSize: '15px',
+                  lineHeight: 1.8,
+                  maxWidth: '480px'
+                }}>
+                  Envie sua mensagem para conhecer melhor o VET MAX,
+                  acompanhar o desenvolvimento ou demonstrar interesse
+                  na plataforma.
+                </p>
+
+                <div style={{
+                  marginTop: '25px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  color: '#9a3412',
+                  fontSize: '14px',
+                  fontWeight: 'bold'
+                }}>
+                  <span style={{ fontSize: '22px' }}>✉️</span>
+                  vetmaxgestao@gmail.com
+                </div>
+              </div>
+
+              <form
+                onSubmit={handleContactSubmit}
+                style={{
+                  ...styles.card,
+                  padding: '28px'
+                }}
+              >
+                <h3 style={{
+                  color: '#9a3412',
+                  fontSize: '20px',
+                  margin: '0 0 22px'
+                }}>
+                  Envie sua mensagem
+                </h3>
+
+                <div style={{
+                  position: 'absolute',
+                  left: '-10000px',
+                  width: '1px',
+                  height: '1px',
+                  overflow: 'hidden'
+                }} aria-hidden="true">
+                  <label>
+                    Não preencha este campo
+                    <input
+                      type="text"
+                      name="website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      tabIndex="-1"
+                      autoComplete="off"
+                    />
+                  </label>
+                </div>
+
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    marginBottom: '7px',
+                    color: '#57534e'
+                  }}>
+                    Nome
+                  </label>
+
+                  <input
+                    className="vet-contact-input"
+                    name="name"
+                    value={contact.name}
+                    onChange={handleContactChange}
+                    required
+                    maxLength="100"
+                    placeholder="Seu nome"
+                    style={styles.input}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    marginBottom: '7px',
+                    color: '#57534e'
+                  }}>
+                    E-mail
+                  </label>
+
+                  <input
+                    className="vet-contact-input"
+                    type="email"
+                    name="email"
+                    value={contact.email}
+                    onChange={handleContactChange}
+                    required
+                    maxLength="150"
+                    placeholder="seu@email.com"
+                    style={styles.input}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '15px' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    marginBottom: '7px',
+                    color: '#57534e'
+                  }}>
+                    Assunto
+                  </label>
+
+                  <select
+                    className="vet-contact-input"
+                    name="subject"
+                    value={contact.subject}
+                    onChange={handleContactChange}
+                    style={styles.input}
+                  >
+                    <option>Quero conhecer o VET MAX</option>
+                    <option>Interesse em planos e preços</option>
+                    <option>Tenho uma clínica veterinária</option>
+                    <option>Tenho um hospital veterinário</option>
+                    <option>Tenho uma rede de unidades</option>
+                    <option>Outra dúvida</option>
+                  </select>
+                </div>
+
+                <div style={{ marginBottom: '18px' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    marginBottom: '7px',
+                    color: '#57534e'
+                  }}>
+                    Mensagem
+                  </label>
+
+                  <textarea
+                    className="vet-contact-input"
+                    name="message"
+                    value={contact.message}
+                    onChange={handleContactChange}
+                    required
+                    maxLength="3000"
+                    rows="5"
+                    placeholder="Conte como podemos ajudar..."
+                    style={{
+                      ...styles.input,
+                      resize: 'vertical',
+                      lineHeight: 1.6
+                    }}
+                  />
+                </div>
+
+                {contactStatus && (
+                  <div role="status" style={{
+                    padding: '12px',
+                    borderRadius: '9px',
+                    marginBottom: '15px',
+                    fontSize: '13px',
+                    lineHeight: 1.5,
+                    color: contactStatus.type === 'success' ? '#166534' : '#991b1b',
+                    background: contactStatus.type === 'success' ? '#dcfce7' : '#fee2e2'
+                  }}>
+                    {contactStatus.message}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={sending}
+                  style={{
+                    ...styles.primaryButton,
+                    width: '100%',
+                    opacity: sending ? 0.7 : 1,
+                    cursor: sending ? 'wait' : 'pointer'
+                  }}
+                >
+                  {sending ? 'Enviando mensagem...' : 'Enviar mensagem'}
+                </button>
+
+                <p style={{
+                  color: '#a8a29e',
+                  fontSize: '11px',
+                  lineHeight: 1.6,
+                  margin: '13px 0 0',
+                  textAlign: 'center'
+                }}>
+                  Seus dados serão utilizados para responder à sua solicitação.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
       </main>
 
-      {/* RODAPÉ */}
-      <footer
-        style={{
-          textAlign: 'center',
-          padding: '22px 20px',
-          borderTop: '1px solid #fef3c7',
-          backgroundColor: '#fffdfa'
-        }}
-      >
-        <p
-          style={{
-            margin: '0 0 6px',
-            color: '#9ca3af',
-            fontSize: '12px'
-          }}
-        >
-          © 2026 VET MAX. Todos os direitos reservados.
-        </p>
-
-        <p
-          style={{
-            margin: 0,
-            color: '#b45309',
-            fontSize: '12px',
-            fontStyle: 'italic'
-          }}
-        >
-          by Jonathan D. Andrade
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
